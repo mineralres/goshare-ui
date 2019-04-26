@@ -1,3 +1,7 @@
-test/unit/coverage/**
-test/unit/*.js
-test/e2e/*.js
+src/**/*-test.js
+src/public
+src/routes/chart/ECharts/theme
+src/routes/chart/highCharts/mapdata
+src/locales/_build/
+src/locales/**/*.js
+docs/**/*.js
