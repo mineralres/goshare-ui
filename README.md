@@ -5,26 +5,13 @@
   </a>
 </p>
 
-<h1 align="center">AntD Admin</h1>
+<h1 align="center">GoShare UI</h1>
 
 <div align="center">
-
-An excellent front-end solution for enterprise applications.
-
-[![antd](https://img.shields.io/badge/antd-^3.10.0-blue.svg?style=flat-square)](https://github.com/ant-design/ant-design)
-[![umi](https://img.shields.io/badge/umi-^2.2.1-orange.svg?style=flat-square)](https://github.com/umijs/umi)
-[![GitHub issues](https://img.shields.io/github/issues/zuiidea/antd-admin.svg?style=flat-square)](https://github.com/zuiidea/antd-admin/issues)
-[![MIT](https://img.shields.io/dub/l/vibe-d.svg?style=flat-square)](http://opensource.org/licenses/MIT)
-![Travis (.org)](https://img.shields.io/travis/zuiidea/antd-admin.svg)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](https://github.com/zuiidea/antd-admin/pulls)
-[![Gitter](https://img.shields.io/gitter/room/antd-admin/antd-admin.svg)](https://gitter.im/antd-admin/antd-admin)
 
 </div>
 
 - Preview - [https://antd-admin.zuiidea.com](https://antd-admin.zuiidea.com)
-- Documentation - [https://doc.antd-admin.zuiidea.com](https://doc.antd-admin.zuiidea.com)
-- FAQ - [https://doc.antd-admin.zuiidea.com/#/faq](https://doc.antd-admin.zuiidea.com/#/faq)
-- ChangeLog - [https://doc.antd-admin.zuiidea.com/#/change-log](https://doc.antd-admin.zuiidea.com/#/change-log)
 
 English | [简体中文](./README-zh_CN.md) 
 

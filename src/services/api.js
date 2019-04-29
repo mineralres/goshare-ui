@@ -15,4 +15,9 @@ export default {
   queryPostList: '/posts',
 
   queryDashboard: '/dashboard',
+
+  queryStrategyList: '/strategies', // 交易策略列表
+  queryStrategy: '/strategy/:id', // 单个交易策略信息
+  createStrategy: 'POST /strategy', // 创建策略
+  removeStrategy: 'DELETE /strategy/:id',
 }
