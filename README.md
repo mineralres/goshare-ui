@@ -11,7 +11,7 @@
 
 </div>
 
-- Preview - [https://antd-admin.zuiidea.com](https://antd-admin.zuiidea.com)
+- Preview - [https://admin.cyconst.com/](https://admin.cyconst.com/)
 
 English | [简体中文](./README-zh_CN.md) 
 
@@ -28,8 +28,8 @@ English | [简体中文](./README-zh_CN.md)
 1. Clone project code.
 
 ```bash
-git clone https://github.com/zuiidea/antd-admin.git my-project
-cd my-project
+git clone https://github.com/mineralres/goshare-ui.git
+cd goshare-ui
 ```
 
 2. Installation dependence.
@@ -69,5 +69,5 @@ Modern browsers.
 We very much welcome your contribution, you can build together with us in the following ways :smiley: 
 
 - Use Ant Design Pro in your daily work.
-- Submit [GitHub issues](http://github.com/zuiidea/antd-admin/issues)s to report bugs or ask questions.
-- Propose [Pull Request](http://github.com/zuiidea/antd-admin/pulls) to improve our code.
+- Submit [GitHub issues](https://github.com/mineralres/goshare-ui/issues)s to report bugs or ask questions.
+- Propose [Pull Request](https://github.com/mineralres/goshare-ui/pulls) to improve our code.
