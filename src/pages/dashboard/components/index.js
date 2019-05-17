@@ -8,6 +8,8 @@ import Completed from './completed'
 import Browser from './browser'
 import Cpu from './cpu'
 import User from './user'
+import DCenter from './dcenter'
+import MarketData from './marketData'
 
 export {
   NumberCard,
@@ -20,4 +22,6 @@ export {
   Browser,
   Cpu,
   User,
+  DCenter,
+  MarketData,
 }

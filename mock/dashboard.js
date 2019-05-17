@@ -53,6 +53,7 @@ const Dashboard = Mock.mock({
       status: 1,
     },
   ],
+  dcenter: [],
   user: {
     name: 'github',
     sales: 3241,

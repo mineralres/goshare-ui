@@ -6,15 +6,14 @@ import { Color } from 'utils'
 import { Page, ScrollBar } from 'components'
 import {
   NumberCard,
-  Quote,
   Sales,
   Weather,
-  RecentSales,
   Comments,
   Completed,
-  Browser,
   Cpu,
   User,
+  DCenter,
+  MarketData
 } from './components'
 import styles from './index.less'
 
@@ -32,6 +31,21 @@ const bodyStyle = {
   loading,
 }))
 class Dashboard extends PureComponent {
+  componentDidMount() {
+    this.setState({
+      timer: setInterval(() => {
+        this.handleRefresh()
+      }, 2000)
+    })
+  }
+  componentWillUnmount() {
+    clearInterval(this.state.timer)
+  }
+
+  handleRefresh = () => {
+    window.g_app._store.dispatch({ type: 'dashboard/queryDCenterInfo' })
+  }
+
   render() {
     const { avatar, username, dashboard, loading } = this.props
     const {
@@ -45,9 +59,11 @@ class Dashboard extends PureComponent {
       browser,
       cpu,
       user,
+      dcenter,
+      dcenterInCards
     } = dashboard
 
-    const numberCards = numbers.map((item, key) => (
+    const numberCards = dcenterInCards.map((item, key) => (
       <Col key={key} lg={6} md={12}>
         <NumberCard {...item} />
       </Col>
@@ -60,7 +76,12 @@ class Dashboard extends PureComponent {
       >
         <Row gutter={24}>
           {numberCards}
-          <Col lg={18} md={24}>
+          <Col lg={24} md={24}>
+            <Card bordered={false} {...bodyStyle}>
+              <MarketData data={recentSales} />
+            </Card>
+          </Col>
+          <Col lg={24} md={24}>
             <Card
               bordered={false}
               bodyStyle={{
@@ -68,53 +89,6 @@ class Dashboard extends PureComponent {
               }}
             >
               <Sales data={sales} />
-            </Card>
-          </Col>
-          <Col lg={6} md={24}>
-            <Row gutter={24}>
-              <Col lg={24} md={12}>
-                <Card
-                  bordered={false}
-                  className={styles.weather}
-                  bodyStyle={{
-                    padding: 0,
-                    height: 204,
-                    background: Color.blue,
-                  }}
-                >
-                  <Weather
-                    {...weather}
-                    loading={loading.effects['dashboard/queryWeather']}
-                  />
-                </Card>
-              </Col>
-              <Col lg={24} md={12}>
-                <Card
-                  bordered={false}
-                  className={styles.quote}
-                  bodyStyle={{
-                    padding: 0,
-                    height: 204,
-                    background: Color.peach,
-                  }}
-                >
-                  <ScrollBar>
-                    <Quote {...quote} />
-                  </ScrollBar>
-                </Card>
-              </Col>
-            </Row>
-          </Col>
-          <Col lg={12} md={24}>
-            <Card bordered={false} {...bodyStyle}>
-              <RecentSales data={recentSales} />
-            </Card>
-          </Col>
-          <Col lg={12} md={24}>
-            <Card bordered={false} {...bodyStyle}>
-              <ScrollBar>
-                <Comments data={comments} />
-              </ScrollBar>
             </Card>
           </Col>
           <Col lg={24} md={24}>
@@ -125,26 +99,6 @@ class Dashboard extends PureComponent {
               }}
             >
               <Completed data={completed} />
-            </Card>
-          </Col>
-          <Col lg={8} md={24}>
-            <Card bordered={false} {...bodyStyle}>
-              <Browser data={browser} />
-            </Card>
-          </Col>
-          <Col lg={8} md={24}>
-            <Card bordered={false} {...bodyStyle}>
-              <ScrollBar>
-                <Cpu {...cpu} />
-              </ScrollBar>
-            </Card>
-          </Col>
-          <Col lg={8} md={24}>
-            <Card
-              bordered={false}
-              bodyStyle={{ ...bodyStyle.bodyStyle, padding: 0 }}
-            >
-              <User {...user} avatar={avatar} username={username} />
             </Card>
           </Col>
         </Row>

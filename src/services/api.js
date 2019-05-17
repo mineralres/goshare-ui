@@ -1,5 +1,5 @@
 export default {
-  queryRouteList: '/routes',
+  queryRouteList: '/user/routes',
 
   queryUserInfo: '/user',
   logoutUser: '/user/logout',
@@ -19,5 +19,6 @@ export default {
   queryStrategyList: '/strategies', // 交易策略列表
   queryStrategy: '/strategy/:id', // 单个交易策略信息
   createStrategy: 'POST /strategy', // 创建策略
-  removeStrategy: 'DELETE /strategy/:id',
+  removeStrategy: 'DELETE /strategy/:id', // 删除策略
+  queryDCenterInfo: '/dcenter/info', // 数据库摘要
 }

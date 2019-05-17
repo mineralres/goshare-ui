@@ -50,6 +50,7 @@ function Sales({ data }) {
             tickLine={false}
           />
           <YAxis axisLine={false} tickLine={false} />
+          <YAxis yAxisId="right" orientation="right" />
           <CartesianGrid
             vertical={false}
             stroke={Color.borderBase}
@@ -79,6 +80,7 @@ function Sales({ data }) {
             }}
           />
           <Line
+            yAxisId="right"
             type="monotone"
             dataKey="Food"
             stroke={Color.purple}
