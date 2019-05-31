@@ -6,6 +6,10 @@ import { Color } from 'utils'
 import styles from './marketData.less'
 
 
+function PrefixInteger(num, length) {
+  return (Array(length).join('0') + num).slice(-length);
+}
+
 class RecentSales extends Component {
   constructor(props) {
     super(props)
@@ -24,24 +28,29 @@ class RecentSales extends Component {
   }
 
   componentDidMount() {
-    var url = `ws://${window.location.host}/ws/v1/dcenter/subscribe`
-    if (window.location.protocol === 'https') {
-      url = `wss://${window.location.host}/ws/v1/dcenter/subscribe`
+    var url = `ws://${window.location.host}/api/v1/ws/dcenter/subscribe`
+    if (window.location.protocol.includes('https')) {
+      url = `wss://${window.location.host}/api/v1/ws/dcenter/subscribe`
+    }
+    if (window.location.host.includes('localhost')) {
+      url = `ws://localhost:9090/api/v1/ws/dcenter/subscribe`
     }
     console.log('window.location', url)
     var _this = this
     // 订阅行情
-    url = 'ws://localhost:9090/ws/v1/dcenter/subscribe'
     var fx = () => {
+      // url = 'ws://localhost:7000/api/v1/ws/dcenter/subscribe'
       var ws = new WebSocket(url);
       ws.onopen = function (evt) {
         console.log("Connection open ...");
         const list = [
-          { "exchange": "SHFE", "code": "ru1909" },
-          { "exchange": "DCE", "code": "i1909" },
-          { "exchange": "CZCE", "code": "CF909" },
-          { "exchange": "CFFEX", "code": "IF1906" },
-          { "exchange": "INE", "code": "sc1906" },
+          { "exchange": 4, "code": "10001621" },
+          { "exchange": 0, "code": "ru1909" },
+          { "exchange": 0, "code": "ag1912" },
+          { "exchange": 2, "code": "i1909" },
+          { "exchange": 1, "code": "CF909" },
+          { "exchange": 3, "code": "IF1906" },
+          { "exchange": 21, "code": "sc1906" },
         ]
         ws.send(JSON.stringify({ list }));
       };
@@ -61,7 +70,9 @@ class RecentSales extends Component {
         _this.setState(prevState => {
           let newData = [...prevState.data]
           let index = newData.findIndex(el => el.symbol.exchange === md.symbol.exchange && el.symbol.code === md.symbol.code)
-          console.log("Received Message: " + `${md.price} ${md.symbol.exchange}`, index);
+          if (md.symbol.exchange == 'SSE') {
+            console.log("Received Message: " + `${md.price} ${md.symbol.exchange}`, index);
+          }
           if (index >= 0) {
             md.index = index + 1
             newData[index] = md
@@ -107,6 +118,10 @@ class RecentSales extends Component {
               return '中金所'
             case 'INE':
               return '上能所'
+            case 'SSE':
+              return '上交所'
+            case 'SZE':
+              return '深交所'
           }
           return text
         }
@@ -163,7 +178,7 @@ class RecentSales extends Component {
       {
         title: '时间',
         dataIndex: 'time',
-        render: text => moment(text).format('YYYY-MM-DD hh:mm:ss'),
+        render: (text, it) => `${moment(text).format('YYYY-MM-DD HH:mm:ss')}.${PrefixInteger(it.milliseconds, 3)}`,
       },
     ]
     return (
@@ -172,7 +187,7 @@ class RecentSales extends Component {
           pagination={false}
           columns={columns}
           rowKey={(record, key) => key}
-          dataSource={this.state.data.filter((item, key) => key < 5)}
+          dataSource={this.state.data.filter((item, key) => key < 10)}
         />
       </div>
     )

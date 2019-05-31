@@ -77,28 +77,8 @@ class Dashboard extends PureComponent {
         <Row gutter={24}>
           {numberCards}
           <Col lg={24} md={24}>
-            <Card bordered={false} {...bodyStyle}>
+            <Card bordered={false}>
               <MarketData data={recentSales} />
-            </Card>
-          </Col>
-          <Col lg={24} md={24}>
-            <Card
-              bordered={false}
-              bodyStyle={{
-                padding: '24px 36px 24px 0',
-              }}
-            >
-              <Sales data={sales} />
-            </Card>
-          </Col>
-          <Col lg={24} md={24}>
-            <Card
-              bordered={false}
-              bodyStyle={{
-                padding: '24px 36px 24px 0',
-              }}
-            >
-              <Completed data={completed} />
             </Card>
           </Col>
         </Row>

@@ -71,12 +71,7 @@ export default {
   theme: './config/theme.config.js',
   // Webpack Configuration
   proxy: {
-    '/ws/v1/*': {
-      target: 'http://localhost:9090', // proxy to go share server
-      changeOrigin: true,
-      ws: true // as websocket
-    },
-    '/api/v1/*': {
+    '/api/v1/': {
       target: 'http://localhost:9090', // proxy to go share server
       changeOrigin: true
     },

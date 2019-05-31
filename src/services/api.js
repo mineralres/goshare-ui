@@ -21,4 +21,5 @@ export default {
   createStrategy: 'POST /strategy', // 创建策略
   removeStrategy: 'DELETE /strategy/:id', // 删除策略
   queryDCenterInfo: '/dcenter/info', // 数据库摘要
+  queryInstrumentList: '/dcenter/instrumentList'
 }

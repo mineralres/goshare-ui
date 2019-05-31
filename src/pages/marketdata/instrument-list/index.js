@@ -4,6 +4,8 @@ import PropTypes from 'prop-types'
 import { Page, ScrollBar } from 'components'
 import { Row, Col, Card } from 'antd'
 import styles from './index.less';
+import { connect } from 'dva'
+import { withI18n } from '@lingui/react'
 
 const bodyStyle = {
   bodyStyle: {
@@ -12,7 +14,9 @@ const bodyStyle = {
   },
 }
 
-class CNFutures extends PureComponent {
+@withI18n()
+@connect(({ post, loading }) => ({ post, loading }))
+class InstrumentList extends PureComponent {
   render() {
     return (
       <Page>
@@ -30,4 +34,4 @@ class CNFutures extends PureComponent {
   }
 }
 
-export default CNFutures
+export default InstrumentList
