@@ -1,6 +1,4 @@
-*.svg
-*.ejs
-.DS_Store
+**/*.svg
+package.json
 .umi
 .umi-production
-src/locales/**/*.json
